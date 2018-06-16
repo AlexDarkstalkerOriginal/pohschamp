@@ -1,0 +1,819 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Jua', sans-serif;
+  line-height: 1.4;
+  font-size: 18px;
+  color: #000;  
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;  
+}
+
+body:before {
+  content: '';
+  background: url('../img/bg.jpg') no-repeat; 
+  background-size: cover;    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: -1;
+}
+
+body:after {
+  content: '';
+  background: black; 
+  background-size: cover;    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: .4;
+  z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+p, h1, h2, h3, h4, h5, span {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+} 
+
+h1, h2, h3, h4, h5 {
+  color: #000;
+}
+
+input, button {
+  font-family: 'Jua', sans-serif;
+}
+
+input:focus, button:focus, a:focus {
+  outline: unset;
+}
+
+.content, header {
+  width: 1000px;
+  margin: 0 auto;
+  display: block;
+}
+
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* монстер компонент*/
+
+  .monster {  
+    display: inline-block;
+    float: left;
+    width: 32%;
+    background: #fff;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    padding: 20px 15px;
+    position: relative;
+  }
+
+  .monster .place {    
+    font-size: 50px;
+    vertical-align: top;
+    top: 40px;
+    line-height: 0.6;    
+    color: blue;
+    font-weight: 900;
+  }
+
+  .monster img {
+    display: block;
+    margin: 20px auto 0px auto;
+    width: 50%;  
+  }
+
+  .monster span {
+    font-size: 14px;
+    opacity: .7;
+  }
+
+  .monster .value, .value {
+    font-size: 18px;
+    opacity: 1;
+    font-weight: bold;
+  }
+
+  .owner {
+    display: block;
+    width: 90%;  
+    margin: 0 auto 10px auto;
+    text-align: center;  
+    overflow: hidden;
+    position: relative;
+  }
+
+  .owner .value:after {
+    content: '...';
+    background: #fff;
+    width: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 4px;
+  }
+
+  .owner .value {  
+    font-size: 14px;
+    display: block;
+  }
+
+  .monster .weight {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    font-size: 18px;
+    color: #0000ff;
+  }
+
+  .monster:nth-child(3n+3) {
+    margin-right: 0;
+  }
+
+  .monster .stats {
+    width: 92%;
+    margin: 15px auto;
+    text-align: center;
+    padding: 5px 2px;
+    border-top: 1px solid #bfbbfb;
+    border-bottom: 1px solid #bfbbfb;
+  }
+
+  .monster .stats span {
+    margin-right: 5px;
+  }
+
+  .monster .stats span:nth-child(3) {
+    margin-right: 0;
+  }
+
+  .monster .stats .value {
+    color: #0000ff;
+  }
+
+  .monster .sell a, .monster .unsell a {
+    color: #fff;
+  }
+
+  .prize:after {
+    content: 'NAS';
+    margin-left: 5px;
+  }
+
+  .monster .unsell {
+    background: red;
+    box-shadow: 3px 3px 10px red;
+  }
+
+  .monster .prize {
+    font-size: 16px;
+    background: #291bff;
+    padding: 7px 16px;
+    color: #fff;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    width: 110px;
+    margin: 5px auto 10px auto;  
+  }
+
+  .monster button, .gift_box .get, .no_monsters button, #sell .sell, .ok_err{ 
+    border: none;
+    padding: 10px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #4e44ff;
+    color: #fff;
+    box-shadow: 3px 3px 10px #4e44ff;
+    margin: 15px auto;
+    display: block;
+    cursor: pointer;
+  }
+
+  .monster .info {
+    position: absolute;
+    bottom: 40px;
+    left: 230px;
+  }
+
+  .monster .info img {
+    width: 24px;      
+    opacity: .6;
+    margin: unset;  
+  }
+
+  .monster .attack {
+    background: #d03939;
+    box-shadow: 3px 3px 10px #d03939;
+  }
+
+  .monster .freeze {
+    background: #717171; 
+    box-shadow: 3px 3px 10px #717171;
+    color: #e0e0e0;
+  }
+
+  .name h3, .name a {
+    display: inline-block;
+    position: relative;
+  }
+
+  .name a img {
+    position: absolute;
+    top: -13px;
+    margin: unset;
+    opacity: .8;
+    right: -22px;
+    width: 16px;
+  }
+
+/* монстер компонент*/
+
+
+
+/* навигация */
+  
+  .nav {
+    border-bottom: 1px solid #dcdcdc;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .logo {
+    width: 200px;
+    margin-bottom: 30px;    
+  }
+  
+  /*.logo:after {
+    content: 'alpha v0.1';
+    font-size: 34px;
+    margin-top: -10px;
+    color: #fff;
+  }*/
+
+  .logo img {
+    width: 100%;
+  }
+
+  .nav button, .lab_nav button {
+    font-size: 20px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .nav .active, .lab_nav .active {
+    color: blue;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+
+  .contact, .htp {
+    position: absolute;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    right: 0;
+    bottom: 15px;
+  }
+
+  .contact {
+    right: 120px;
+  }
+
+  .lab_nav {
+    margin-top: -20px;
+    margin-bottom: 70px;
+  }
+
+/* навигация */
+
+
+/*гифт бокс*/
+
+  .gift_box {
+    width: 100%;    
+  }
+
+  .gift_box h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+    margin-bottom: 70px;
+  }
+
+  .gift_box .pay, .gift_box .free {
+    display: inline-block;
+    position: relative;    
+    width: 30%;
+    text-align: center;
+  }
+
+  .gift_box .free {
+    background: transparent;
+    vertical-align: top;    
+    height: 215px;    
+  }
+
+  .gift_box .free {
+    color: #fff;    
+  }
+
+  .gift_box .free .cost {
+    font-size: 30px;    
+  }
+
+  .gift_box .tip {    
+    font-size: 14px;
+  }
+
+  .gift_box .free .get {        
+    width: 160px !important;
+  }
+
+  .gift_box .pay {
+    background: transparent;
+    vertical-align: top;      
+    height: 215px;    
+  }
+
+  .gift_box .free .prize {
+    font-size: 30px;
+    color: #fff;
+    margin: 10px 0 5px 0;
+  }
+
+  .gift_box .pay .prize {
+    font-size: 30px;
+    color: #fff;
+    margin: 10px 0; 
+  }
+
+  .gift_box .pay .get {    
+    margin-top: 0px;
+    width: 200px;
+  }
+
+  .gift_box .pay .prize {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .gift_box .pay img, .gift_box .free img {
+    width: 180px;    
+    display: block;
+    margin: 0 auto;
+  }
+
+/*гифт бокс*/
+
+/*дроп монстра*/
+
+  .congrat h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+    margin-bottom: 60px;
+  }
+
+  .congrat {
+    width: 100%;
+    position: relative;
+  }
+
+  .congrat .monster:nth-child(4n+4){
+    margin-right: 0;
+  }
+
+  .congrat .monster:nth-child(3n+3){
+    margin-right: 2%;
+  }
+
+  .congrat .name {
+    color: blue;
+    background: #fff;    
+  }
+/*дроп монстра*/
+
+/*версус*/
+  .versus .monster .result {
+    background: transparent;
+    box-shadow: unset;    
+    width: unset;
+    font-size: 34px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .versus .monster .loose {
+    color: red;
+  }
+
+  .versus .monster .winner {
+    color: green;
+  }
+
+  .versus .monster .kg {
+    display: none;
+    position: absolute;
+    bottom: -5px;
+    font-size: 16px;
+    left: 40px;
+  }
+
+  .versus .vs {
+    font-size: 60px;
+    margin-top: 150px;
+    display: inline-block;
+    float: left;    
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 41%;
+  }
+
+  .fight_res {
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+    display: block;    
+    margin-bottom: 70px;
+  }
+
+  .wrap {
+    margin-left: 120px;
+    position: relative;
+  }
+
+  .wrap .monster {
+    margin-right: unset;
+  }
+
+  .wrap .monster:first-child {
+    margin-right: 26%;
+  }
+/*версус*/
+
+/*страница монстра*/
+
+  .monster_page h1 {
+    color: #fff;
+  }
+
+  .monster_page .monster {
+    margin-top: 70px;
+  }
+
+  .monster_page .history, .monster_page .monster {
+    display: inline-block;
+  }
+
+  .monster_page .history {
+    margin-left: 100px;
+  }
+
+  ul {
+    list-style: none;
+    color: #fff;    
+    padding: 0;
+    margin-top: 40px;    
+  }  
+
+  ul li {
+    display: block;    
+    background: rgba(255,255,255,.6);
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    width: 400px;
+    position: relative;
+  }
+
+  ul li:first-child {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  li .opp, li .res, li .info {
+    display: inline-block;
+  }
+
+  .opp {
+    width: 40px;
+    margin-left: 30px;
+    margin-right: 75px;
+  }
+
+  .info img {
+    width: 25px;
+  }
+
+  .res, .info {
+    vertical-align: top;
+    margin-top: 15px;
+  }
+
+  .history .winner {    
+    color: green; 
+  }
+
+  .history .loose {
+    color: red;
+  }
+
+  ul li span {
+    margin-right: 50px;    
+  }
+
+  .history .info {
+    position: absolute;
+    right: 15px;
+    top: 0px;  
+    z-index: 10; 
+  }
+/*страница монстра*/
+
+/*попап с монстрами*/
+  #my_monsters_popup {
+    background: url('../img/bg.jpg') no-repeat; 
+    padding: 60px;
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+  }
+
+  #my_monsters_popup:before {
+    content: '';
+    background: red; 
+    background-size: cover;    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .2;
+    z-index: 0;
+  }
+
+  #my_monsters_popup:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #my_monsters_popup h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  #my_monsters_popup .mfp-close, #transaction .mfp-close {
+    color: #fff;
+  }
+/*попап с монстрами*/
+
+
+/*нет своих монстров*/
+
+  .no_monsters h1 {
+    color: #fff;
+    line-height: 1.4;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .no_monsters:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .no_monsters .column {
+    width: 48%;
+    display: inline-block;    
+  }
+
+  .no_monsters h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .no_monsters button, .ok_err {
+    width: 200px;
+    background: #ff9c44;
+    box-shadow: 3px 3px 10px #ff9c44;
+    display: block;
+    margin: 0 auto;
+  }
+/*нет своих монстров*/
+
+/*нельзя купить фри монстра*/
+  .gift_box .error {
+    margin-top: 230px;    
+  }
+  
+  .gift_box .error h1 {
+    color: #fff;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+/*нельзя купить фри монстра*/
+
+
+/*попап транзации и села*/
+
+  #transaction, #sell, #error_info {
+    background: url('../img/bg.jpg') no-repeat; 
+    padding: 60px;
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+    color: #fff;
+  }
+
+  #transaction .overlay, #sell .overlay {
+    content: '';
+    background: black; 
+    background-size: cover;    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .6;
+    z-index: 0;    
+  }
+  
+  .zindex {
+    z-index: 1;
+    position: relative;
+  }
+
+  #sell input {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    border: none;
+    padding: 10px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 5px;
+    font-size: 20px;
+  }  
+  
+  #sell .mfp-close, #error_info .mfp-close {
+    color: #fff;
+  }
+
+
+  #sell .sell:after {
+    content: 'NAS'
+    margin-left: 10px;
+  }
+
+  .nas {
+    position: absolute;
+    top: 85px;
+    left: 56%;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  #sell .sell {
+    background: #ff9c44;
+    box-shadow: 3px 3px 10px #ff9c44;
+  }
+
+  #transaction h1, #sell h1, #error_info h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .status_trans, .hash p {
+    display: inline-block;
+  }
+
+  .hash {
+    margin-top: 10px;
+  }
+/*попап транзации*/
+
+
+/*фейк ссылки на попапы*/
+  .sell_fake, .attack_fake, .error_info_fake, #error_info .mfp-close {
+    width: 0.0001px;
+    position: absolute;
+    left: -99999px;
+    top: -999999px;
+  }
+/*фейк ссылки на попапы*/
+
+.noExtension {
+  color: #fff;  
+  width: 1100px;
+  display: block;
+  margin: 0 auto 0 auto;
+  padding: 300px;
+  font-size: 30px;
+}
+
+.noExtension a {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.history ul h2 {
+  color: #fff;
+}
+
+.edit {
+  display: none !important;
+}
+
+#faq, #about {
+  width: 1200px;
+  position: relative;
+  background: #fff;
+  margin: 0 auto;  
+  padding: 50px;
+}
+
+#faq h1, #about h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#about span {
+  text-align: center;    
+  margin: 0 auto;
+  width: 330px;
+  display: block;
+}
+
+#about span a {
+  border-bottom: 1px solid black;
+}
+
+#faq p {
+  font-weight: 300;
+  line-height: 1.3;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.logo {
+  display: inline-block;
+}
+
+.user_info {
+  display: inline-block;
+  color: #000;  
+  position: absolute;
+  right: 0;
+  background: rgba(255,255,255,.8);
+  padding: 5px 25px;
+  top: 15px;
+}
+
+.user_info .lvl_user, .user_info .win_user, .user_info .exp_user {
+  display: inline-block;
+  margin-right: 15px;  
+}
+
+.user_info .exp_user {
+  margin-right: 0;
+}
+
+.user_info .value {
+  color: orange;
+}
