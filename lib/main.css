@@ -819,3 +819,13 @@ input:focus, button:focus, a:focus {
 .user_info .value {
   color: orange;
 }
+
+.monster .draw {
+  color: #0e1ef5 !important;
+  background: #fff !important;
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 120px !important;
+}

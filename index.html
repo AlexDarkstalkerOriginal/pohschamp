@@ -68,7 +68,8 @@
 						v-bind:win="monster.win"
 						v-bind:drop="monster.drop"
 						v-bind:exp="monster.exp"						
-						v-bind:sale="monster.sale"						
+						v-bind:sale="monster.sale"
+						v-bind:owner="monster.owner"						
 					></my-monster-lab>		
 				</div>						
 			</div>
@@ -97,20 +98,6 @@
 						v-bind:owner="monster.owner"
 					></monster-bg>		
 				</div>
-			</div>
-
-			<div v-show="rank">				
-					<monster-ranked
-					 	v-for="monster in monsters_ranked"				  
-						v-bind:speed="monster.speed"
-						v-bind:name="monster.name"				  
-						v-bind:flex="monster.flex"
-						v-bind:power="monster.power"
-						v-bind:weight="monster.weight"
-						v-bind:src="'img/' + monster.name + '.png'"
-						v-bind:id="monster.id"
-						v-bind:owner="monster.owner"
-					></monster-ranked>						
 			</div>
 						
 			<div v-show="lab_gift">
@@ -147,7 +134,8 @@
 					v-bind:win="monster.win"
 					v-bind:drop="monster.drop"
 					v-bind:exp="monster.exp"						
-					v-bind:sale="monster.sale"						
+					v-bind:sale="monster.sale"
+					v-bind:owner="monster.owner"						
 				></monster-gift>												
 			</div>
 
@@ -157,16 +145,15 @@
 				<div class="wrap">
 					<monster-fight
 						v-for="monster in monsters_fight"				  
-						v-bind:speed="monster.speed"
-						v-bind:name="monster.name"				  
-						v-bind:flex="monster.flex"
-						v-bind:power="monster.power"
-						v-bind:weight="monster.weight"
-						v-bind:src="'img/' + monster.name + '.png'"
-						v-bind:id="monster.id"
-						v-bind:owner="monster.owner"
+						v-bind:id="monster.id"			  
+						v-bind:name="monster.name"	
+						v-bind:src="'img/' + monster.name + '.png'"	
 						v-bind:win="monster.win"
+						v-bind:drop="monster.drop"
+						v-bind:exp="monster.exp"							
+						v-bind:owner="monster.owner"						
 						v-bind:boolen="monster.boolen"
+						v-bind:draw="monster.draw"
 					></monster-fight>	
 
 					<div class="vs">VS</div>
@@ -176,18 +163,20 @@
 			<div class="monster_page" v-show="monster_page">			
 				<my-monster-page
 					v-for="monster in monster_page_arr"				  
-					v-bind:speed="monster.speed"
-					v-bind:name="monster.name"				  
-					v-bind:flex="monster.flex"
-					v-bind:power="monster.power"
-					v-bind:weight="monster.weight"
-					v-bind:src="'img/' + monster.name + '.png'"
-					v-bind:owner="monster.owner"
+					v-bind:id="monster.id"			  
+					v-bind:name="monster.name"	
+					v-bind:src="'img/' + monster.name + '.png'"	
+					v-bind:win="monster.win"
+					v-bind:drop="monster.drop"
+					v-bind:exp="monster.exp"						
+					v-bind:sale="monster.sale"						
+					v-bind:owner="monster.owner"	
 				></my-monster-page>						
 				<div class="history">
-					<h1>Fights history</h1>
+					<h1>Fights history</h1>					
 					<ul>					
 						<li><span class="opponent">Oppenent</span><span class="result">Result</span></li>						
+						<h2>Comming soon</h2>
 					</ul>
 				</div>
 			</div>
@@ -206,15 +195,41 @@
 					v-bind:drop="monster.drop"
 					v-bind:exp="monster.exp"						
 					v-bind:sale="monster.sale"						
+					v-bind:owner="monster.owner"
 				></my-monster-lab-popup>
 			</div>		
 		</div>
 
 		<div id="faq" class="mfp-fade mfp-hide">
 			<div class="container_faq">
-				<h1>How to play</h1>
+				<h1>FAQ</h1>
 				<p>
-					
+					<b>What is PogsChamp?</b> <br>
+					Pogs, generically called milk caps, is a game that was popular among children during the mid 1990s.					
+					We tried to transfer this game to the Nebulas blockchain.
+					<br><br>
+					<b>Рow to start playing?</b><br>
+					First you need to get a few caps to start playing. You can do this on the "Get pogs" tab. You can get 2 free packs per account.
+					<br><br>
+					<b>How to buy from other players?</b><br>
+					Visit market to buy crypto caps with certain parameters from other players.
+					<br><br>
+					<b>How to attack?</b><br>
+					Growing your lvl by attack opponent's pogs.
+					The core parameter of every account is the lvl which defines chance to turn pog. You are able to gain exp by attacking others and winning.
+					Game economy can’t be influenced by developers as there is no tools to change code after smart contracts are deployed and game is launched.
+					For each victory you can get experience. The experience depends on the characteristics of the pog. Also, if you win, you have a chance to pick up the pog of the opponent.
+					It depends on the property "drop" for each pog.
+					<br><br>
+					<b>What influences my chance to turn pog?</b><br>
+					The probability of reversing the pog depends on lvl, chane to turn(depends on lvl), the characteristics of the pog and the difference between 
+					the levels of the attacker and the defending one.
+					<br><br>
+					<b>What is the maximum lvl?</b><br>
+					20.
+					<br><br>
+					<b>How often can I attack and be attacked?</b><br>
+					You can attack every 2 minutes and be attacked every 5 minutes.
 				</p>
 			</div>
 		</div>
