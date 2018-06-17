@@ -199,14 +199,13 @@
 			<div id="my-monster-lab-popup">
 				<my-monster-lab-popup				  
 					v-for="monster in my_monsters"				  
-					v-bind:speed="monster.speed"
-					v-bind:name="monster.name"				  
-					v-bind:flex="monster.flex"
-					v-bind:power="monster.power"
-					v-bind:weight="monster.weight"
-					v-bind:src="'img/' + monster.name + '.png'"
-					v-bind:id="monster.id"
-					v-bind:born_time="monster.born_time"					
+					v-bind:id="monster.id"			  
+					v-bind:name="monster.name"	
+					v-bind:src="'img/' + monster.name + '.png'"	
+					v-bind:win="monster.win"
+					v-bind:drop="monster.drop"
+					v-bind:exp="monster.exp"						
+					v-bind:sale="monster.sale"						
 				></my-monster-lab-popup>
 			</div>		
 		</div>
@@ -240,8 +239,11 @@
 	<a href="#error_info" class="error_info_fake popup"></a>
 
 	<div id="error_info" class="mfp-fade mfp-hide">
-		<h1 class="error"></h1>
-		<button class="ok_err">Ok</button>
+		<div class="overlay"></div>
+		<div class="zindex">
+			<h1 class="error"></h1>
+			<button class="ok_err">Ok</button>
+		</div>
 	</div>
 
 	<a href="#sell" class="popup sell_fake"></a>
