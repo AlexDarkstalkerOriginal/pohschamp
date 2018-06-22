@@ -14,6 +14,10 @@ body {
   background: #fff;  
 }
 
+#monster-page-player .info {
+  left: 280px;
+}
+
 body:before {
   content: '';
   background: url(../img/bg.jpg) repeat-y;
