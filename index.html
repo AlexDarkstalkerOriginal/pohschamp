@@ -32,6 +32,7 @@
 			<button class="battleground">Fight</button>			
 			<a href="#faq" class="popup htp">How to play</a>
 			<a href="#about" class="popup contact">Contact</a>
+			<a href="#pogs_view" class="popup pogs">All pogs</a>
 		</div>
 
 		<div class="container">
@@ -54,6 +55,7 @@
 						v-bind:sale="monster.sale"						
 						v-bind:owner="monster.owner"
 						v-bind:price="monster.price"
+						v-bind:rare="monster.rare"
 					></monster-market>		
 				</div>
 			</div>
@@ -70,6 +72,7 @@
 						v-bind:exp="monster.exp"						
 						v-bind:sale="monster.sale"
 						v-bind:owner="monster.owner"						
+						v-bind:rare="monster.rare"
 					></my-monster-lab>		
 				</div>						
 			</div>
@@ -96,6 +99,7 @@
 						v-bind:drop="monster.drop"
 						v-bind:exp="monster.exp"												
 						v-bind:owner="monster.owner"
+						v-bind:rare="monster.rare"
 					></monster-bg>		
 				</div>
 			</div>
@@ -105,20 +109,21 @@
 					<h1>Get your new pog</h1>
 					<div class="pay">
 						<img src="img/box.png" alt="">
-						<span class="prize">Only 0.01</span>
+						<span class="cost">Crypto Gods</span>
 						<button data-id-pack="2" class="get pay_monster_get">Get premium pogs</button>
+						<span class="prize">Only 0.01</span>
 					</div>						
 					<div class="free">
 						<img src="img/box_1.png" alt="">
-						<span class="cost">FREE pogs</span>						
+						<span class="cost">Simpsons pogs</span>						
 						<button data-id-pack="0" class="get get_free_monster">Get free pogs</button>						
 					</div>
 					<div class="free">
 						<img src="img/box_2.png" alt="">
-						<span class="cost">FREE pogs</span>
-						<button data-id-pack="1" class="get get_free_monster">Get free pogs</button>						
-					</div>
-					<span class="tip">Only 2 free box for each account</span>
+						<span class="cost">Pokemon pogs</span>
+						<button data-id-pack="1" class="get get_free_monster">Get free pogs</button>				
+						<span class="tip">Only 2 free box for each account</span>
+					</div>										
 					<div class="error">
 						<h1></h1>
 					</div>
@@ -135,7 +140,8 @@
 					v-bind:drop="monster.drop"
 					v-bind:exp="monster.exp"						
 					v-bind:sale="monster.sale"
-					v-bind:owner="monster.owner"						
+					v-bind:owner="monster.owner"	
+					v-bind:rare="monster.rare"					
 				></monster-gift>												
 			</div>
 
@@ -154,6 +160,8 @@
 						v-bind:owner="monster.owner"						
 						v-bind:boolen="monster.boolen"
 						v-bind:draw="monster.draw"
+						v-bind:rare="monster.rare"						
+						v-bind:dropped="monster.dropped"
 					></monster-fight>	
 
 					<div class="vs">VS</div>
@@ -171,13 +179,78 @@
 					v-bind:exp="monster.exp"						
 					v-bind:sale="monster.sale"						
 					v-bind:owner="monster.owner"	
+					v-bind:rare="monster.rare"
 				></my-monster-page>						
 				<div class="history">
 					<h1>Fights history</h1>					
 					<ul>					
 						<li><span class="opponent">Oppenent</span><span class="result">Result</span></li>						
-						<h2>Comming soon</h2>
+						<!-- <h2>Comming soon</h2> -->
 					</ul>
+				</div>
+			</div>
+
+			<div class="account_page" v-show="account_page">
+				<h1>Player information</h1>
+				<div class="info_block">
+					<span class="lvl"><span class="value">{{player_lvl_info}}</span>lvl</span>					
+					<span class="turn">chance to turn:<span class="value">{{player_chance_info}}%</span></span>
+					<span class="exp">exp:<span class="value">{{player_current_info}}/{{player_exp_info}}</span></span>								
+					<span class="owner">owner: <span class="value">{{player_owner_info}}</span></span>
+				</div>
+				<div class="dinamic_block">
+					<h2>Game history</h2>
+
+					<ul class="data_headers">
+						<li>
+							<span>Player</span>
+							<span>Opponent</span>
+							<span>Result</span>
+							<span>Info</span>
+						</li>	
+					</ul>
+
+					<ul class="data_history history">
+						<li>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span class="winner">Win</span>
+							<a href="#" class="info"><img src="img/info.png"></a>
+						</li>
+						<li>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span class="loose">Loose</span>
+							<a href="#" class="info"><img src="img/info.png"></a>
+						</li>
+						<li>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span><img src="img/Snake.png" alt=""></span>
+							<span class="draw">Draw</span>
+							<a href="#" class="info"><img src="img/info.png"></a>
+						</li>
+					</ul>
+
+					<!-- <div class="history_nav">
+						<button class="prev"><</button>
+						<button class="next">></button>
+					</div> -->
+				</div>
+
+				<div class="player_caps">
+					<h2>Player pogs</h2>
+					<div id="monster-page-player">
+					<player-monsters
+						v-for="monster in player_monsters"	
+						v-bind:id="monster.id"			  
+						v-bind:name="monster.name"	
+						v-bind:src="'img/' + monster.name + '.png'"	
+						v-bind:win="monster.win"
+						v-bind:drop="monster.drop"
+						v-bind:exp="monster.exp"																
+						v-bind:rare="monster.rare"
+					></player-monsters>		
+				</div>		
 				</div>
 			</div>
 
@@ -196,6 +269,7 @@
 					v-bind:exp="monster.exp"						
 					v-bind:sale="monster.sale"						
 					v-bind:owner="monster.owner"
+					v-bind:rare="monster.rare"
 				></my-monster-lab-popup>
 			</div>		
 		</div>
@@ -239,6 +313,21 @@
 			<span>E-mail: 
 				<a href="mailto:alexdarkstalkeroriginal@gmail.com">alexdarkstalkeroriginal@gmail.com</a>
 			</span>
+		</div>
+
+		<div id="pogs_view" class="mfp-fade mfp-hide">
+			<div class="zindex">
+				<h1>All pogs in game</h1>
+				<div id="monster_view">
+					<monster-view
+						v-for="monster in monster_view"				  								
+						v-bind:name="monster.name"	
+						v-bind:src="'img/' + monster.name + '.png'"	
+						v-bind:drop="monster.drop"	
+						v-bind:rare="monster.rare"				
+					></monster-view>	
+				</div>
+			</div>
 		</div>
 	</div>
 
