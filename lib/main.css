@@ -15,7 +15,7 @@ body {
 }
 
 #monster-page-player .info {
-  left: 280px;
+  left: 280px !important;
 }
 
 body:before {
